@@ -14,5 +14,7 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::resource('subscribe', 'SubscribeController')->only(['store', 'show', 'destroy']);
+
 Auth::routes();
 
