@@ -32,7 +32,7 @@ class SubscribeController extends Controller
      */
     public function show(Subscribe $subscribe)
     {
-        //
+        return view('subscribe.pageA', compact('subscribe'));
     }
 
     /**
