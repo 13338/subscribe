@@ -10,6 +10,17 @@
                 <div class="card-body">
                     <p>Subscribe expired at {{ $subscribe->expired_at }}</p>
                     <p><a href="{{ asset('files/file.mp3') }}" download>Download file</a></p>
+                    <form method="POST" action="{{ route('subscribe.destroy', ['subscribe' => $subscribe]) }}">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                        <div class="form-group row mb-0">
+                            <div class="col">
+                                <button type="submit" class="btn btn-secondary">
+                                    {{ __('Unsubscribe') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -21,4 +21,9 @@ class Subscribe extends Model
     protected $fillable = [
         'name', 'email'
     ];
+
+    public function cancel()
+    {
+        $this->is_cancelled = true;
+    }
 }

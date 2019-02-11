@@ -43,6 +43,8 @@ class SubscribeController extends Controller
      */
     public function destroy(Subscribe $subscribe)
     {
-        //
+        $subscribe->cancel();
+        $subscribe->save();
+        return redirect()->route('home');
     }
 }
