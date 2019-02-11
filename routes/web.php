@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::resource('subscribe', 'SubscribeController')->only(['store', 'show', 'destroy']);
+
+Auth::routes();
+

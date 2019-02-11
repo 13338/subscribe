@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Subscribe;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -23,7 +25,12 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Route::bind('subscribe', function ($value) {
+            return Subscribe::where('id', $value)
+                    ->where('expired_at', '>=', Carbon::now())
+                    ->where('is_cancelled', false)
+                    ->first() ?? abort(404);
+        });
 
         parent::boot();
     }
