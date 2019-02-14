@@ -18,7 +18,8 @@ class SubscribeController extends Controller
     public function store(Request $request)
     {
         $subscribe = new Subscribe($request->all());
-        $subscribe->id = Str::uuid()->toString();;
+        $subscribe->id = Str::uuid()->toString();
+        $subscribe->file = Str::uuid()->toString();
         $subscribe->expired_at = Carbon::now()->addMonth(3);
         $subscribe->save();
         return redirect()->route('subscribe.show', ['subscribe' => $subscribe->id]);

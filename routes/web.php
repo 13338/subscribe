@@ -21,5 +21,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'mi
     Route::resource('subscribe', 'SubscribeController')->except('show');
 });
 
+Route::get('file/{uuid}', 'FileController@download')->name('file.download');
+
 Auth::routes();
 

@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <p>Subscribe expired at {{ $subscribe->expired_at }}</p>
-                    <p><a href="{{ asset('files/file.mp3') }}" download>Download file</a></p>
+                    <p><a href="{{ route('file.download', ['file' => $subscribe->file]) }}">Download file</a></p>
                     <form method="POST" action="{{ route('subscribe.destroy', ['subscribe' => $subscribe]) }}">
                         @csrf
                         {{ method_field('DELETE') }}
