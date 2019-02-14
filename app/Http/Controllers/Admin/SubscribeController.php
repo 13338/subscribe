@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Subscribe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Str;
 
 class SubscribeController extends Controller
 {
@@ -39,7 +38,6 @@ class SubscribeController extends Controller
     public function store(Request $request)
     {
         $subscribe = new Subscribe($request->all());
-        $subscribe->id = Str::uuid()->toString();
         $subscribe->save();
         return redirect()->route('admin.subscribe.edit', ['subscribe' => $subscribe]);
     }
