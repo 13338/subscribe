@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subscribe extends Model
 {
+    use Uuids;
+
     /**
      * Indicates if the IDs are auto-incrementing.
      *

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Subscribe;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class SubscribeController extends Controller
 {
@@ -18,8 +17,6 @@ class SubscribeController extends Controller
     public function store(Request $request)
     {
         $subscribe = new Subscribe($request->all());
-        $subscribe->id = Str::uuid()->toString();
-        $subscribe->file = Str::uuid()->toString();
         $subscribe->expired_at = Carbon::now()->addMonth(3);
         $subscribe->save();
         return redirect()->route('subscribe.show', ['subscribe' => $subscribe->id]);
