@@ -16,5 +16,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('subscribe', 'SubscribeController')->only(['store', 'show', 'destroy']);
 
+Route::get('file/{uuid}', 'FileController@download')->name('file.download');
+
 Auth::routes();
 
