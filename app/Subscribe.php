@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Subscribe extends Model
@@ -19,6 +20,11 @@ class Subscribe extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email'
+        'name', 'email', 'is_cancelled', 'expired_at'
     ];
+
+    public function cancel()
+    {
+        $this->is_cancelled = true;
+    }
 }

@@ -16,5 +16,10 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('subscribe', 'SubscribeController')->only(['store', 'show', 'destroy']);
 
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function () {
+    Route::any('/', 'SubscribeController@index');
+    Route::resource('subscribe', 'SubscribeController')->except('show');
+});
+
 Auth::routes();
 
